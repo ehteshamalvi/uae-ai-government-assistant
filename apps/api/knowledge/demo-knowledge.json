@@ -1,0 +1,112 @@
+{
+  "documents": [
+    {
+      "id": "kb-trade-overview",
+      "title": "Trade License Renewal — Overview",
+      "category": "SERVICE",
+      "serviceCode": "TRADE_LICENSE_RENEWAL",
+      "sourceType": "GOVFLOW_DEMO_KNOWLEDGE",
+      "version": "1.0",
+      "content": "GovFlow Demo Knowledge (sandbox only — not official UAE government guidance). Trade License Renewal helps a business prepare a renewal application in the GovFlow sandbox. Typical demo steps: identify the service, complete company and license fields, upload supporting documents, review readiness, confirm final review, complete sandbox payment, then submit for simulated processing."
+    },
+    {
+      "id": "kb-trade-docs",
+      "title": "Trade License Renewal — Documents",
+      "category": "DOCUMENT",
+      "serviceCode": "TRADE_LICENSE_RENEWAL",
+      "sourceType": "GOVFLOW_DEMO_KNOWLEDGE",
+      "version": "1.0",
+      "content": "GovFlow Demo Knowledge. Common demo documents for Trade License Renewal include: current trade license copy, tenancy/lease evidence, memorandum of association (MOA), and Emirates ID. Document analysis is a demo AI check only and is not legal verification. Warnings (for example image quality) may reduce validation score while still allowing preparation."
+    },
+    {
+      "id": "kb-trade-fields",
+      "title": "Trade License Renewal — Application Information",
+      "category": "SERVICE",
+      "serviceCode": "TRADE_LICENSE_RENEWAL",
+      "sourceType": "GOVFLOW_DEMO_KNOWLEDGE",
+      "version": "1.0",
+      "content": "GovFlow Demo Knowledge. Typical application fields in the sandbox include company name, license number, license type, expiry date, and renewal period. Values may be user provided, AI extracted (demo), or system verified. Missing mandatory fields lower readiness information score."
+    },
+    {
+      "id": "kb-eid-overview",
+      "title": "Emirates ID Update — Overview",
+      "category": "SERVICE",
+      "serviceCode": "EMIRATES_ID_UPDATE",
+      "sourceType": "GOVFLOW_DEMO_KNOWLEDGE",
+      "version": "1.0",
+      "content": "GovFlow Demo Knowledge (sandbox only). Emirates ID Update is a demo individual service for preparing identity update information. The flow mirrors other GovFlow transactions: intent, requirements, documents, readiness, review, sandbox payment if applicable, and sandbox submission."
+    },
+    {
+      "id": "kb-eid-docs",
+      "title": "Emirates ID Update — Document Guidance",
+      "category": "DOCUMENT",
+      "serviceCode": "EMIRATES_ID_UPDATE",
+      "sourceType": "GOVFLOW_DEMO_KNOWLEDGE",
+      "version": "1.0",
+      "content": "GovFlow Demo Knowledge. Demo document guidance for Emirates ID Update typically emphasizes a clear Emirates ID image and any supporting identity documents configured in the service requirements. Low image quality often produces a demo WARNING status, not a government verification result."
+    },
+    {
+      "id": "kb-permit-overview",
+      "title": "Commercial Permit — Overview",
+      "category": "SERVICE",
+      "serviceCode": "COMMERCIAL_PERMIT",
+      "sourceType": "GOVFLOW_DEMO_KNOWLEDGE",
+      "version": "1.0",
+      "content": "GovFlow Demo Knowledge (sandbox only). Commercial Permit is a demo permit service. Users identify the service via intent, complete required fields and documents, then use the same review, sandbox payment, and submission path as other GovFlow demo services."
+    },
+    {
+      "id": "kb-permit-docs",
+      "title": "Commercial Permit — Requirements Guidance",
+      "category": "DOCUMENT",
+      "serviceCode": "COMMERCIAL_PERMIT",
+      "sourceType": "GOVFLOW_DEMO_KNOWLEDGE",
+      "version": "1.0",
+      "content": "GovFlow Demo Knowledge. Commercial Permit requirements are defined by the seeded service catalog. Check required fields and documents in the transaction workspace. Do not treat demo checklist items as official municipal permit rules."
+    },
+    {
+      "id": "kb-lifecycle",
+      "title": "Transaction Lifecycle",
+      "category": "LIFECYCLE",
+      "serviceCode": null,
+      "sourceType": "GOVFLOW_DEMO_KNOWLEDGE",
+      "version": "1.0",
+      "content": "GovFlow Demo Knowledge. Sandbox lifecycle: PREPARING → READY_FOR_REVIEW / review confirm → PAYMENT_PENDING → SUBMITTED → PROCESSING → COMPLETED. Invalid transitions are rejected by the server. After sandbox submission you receive a SUB-YYYY-… reference. Advance sandbox status with the demo monitor controls. This is not a real government workflow."
+    },
+    {
+      "id": "kb-payment",
+      "title": "Sandbox Payment",
+      "category": "PAYMENT",
+      "serviceCode": null,
+      "sourceType": "GOVFLOW_DEMO_KNOWLEDGE",
+      "version": "1.0",
+      "content": "GovFlow Demo Knowledge. Sandbox payment amounts are calculated from service metadata (baseFeeAed + additionalFeeAed). No real money is charged. Testers can force SUCCESS or FAILURE via the payment process outcome. Card numbers and CVV are never collected."
+    },
+    {
+      "id": "kb-submission",
+      "title": "Sandbox Submission",
+      "category": "SUBMISSION",
+      "serviceCode": null,
+      "sourceType": "GOVFLOW_DEMO_KNOWLEDGE",
+      "version": "1.0",
+      "content": "GovFlow Demo Knowledge. Sandbox submission requires confirmed final review, no blocking requirements, and completed sandbox payment when fees apply. Submission creates a demo submission reference. GovFlow does not connect to Dubai Government, TAMM, or any UAE government system."
+    },
+    {
+      "id": "kb-document-guidance",
+      "title": "Document Guidance (General)",
+      "category": "DOCUMENT",
+      "serviceCode": null,
+      "sourceType": "GOVFLOW_DEMO_KNOWLEDGE",
+      "version": "1.0",
+      "content": "GovFlow Demo Knowledge. Document analysis in this environment is a demo AI check (classification, quality flags, expiry hints). Statuses such as VALID, WARNING, or INVALID are sandbox labels. Re-upload clearer files to improve demo validation scores. This is not legal document verification."
+    },
+    {
+      "id": "kb-sandbox",
+      "title": "Sandbox Environment Disclaimer",
+      "category": "SANDBOX",
+      "serviceCode": null,
+      "sourceType": "GOVFLOW_DEMO_KNOWLEDGE",
+      "version": "1.0",
+      "content": "GovFlow Demo Knowledge. GovFlow AI is a demonstration/sandbox platform. It is not affiliated with TAMM, DubaiNow, Abu Dhabi Government, Dubai Government, or any other government entity. Payments and submissions are simulated only."
+    }
+  ]
+}

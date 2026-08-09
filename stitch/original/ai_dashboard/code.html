@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GovFlow AI Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#002e34",
+                        "on-surface-variant": "#42474d",
+                        "tertiary-fixed-dim": "#6fd5e4",
+                        "primary-fixed-dim": "#a8caef",
+                        "secondary-fixed-dim": "#00daf3",
+                        "surface-container": "#eceef0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7293b6",
+                        "tertiary-fixed": "#94f1ff",
+                        "surface": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#9cf0ff",
+                        "outline": "#73777e",
+                        "on-error": "#ffffff",
+                        "secondary": "#006875",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#004f57",
+                        "on-secondary-fixed-variant": "#004f58",
+                        "on-background": "#191c1e",
+                        "inverse-on-surface": "#eff1f3",
+                        "inverse-primary": "#a8caef",
+                        "secondary-container": "#00e3fd",
+                        "on-secondary-container": "#00616d",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#00181b",
+                        "on-primary-fixed": "#001d34",
+                        "primary-fixed": "#cfe5ff",
+                        "primary": "#001629",
+                        "on-secondary-fixed": "#001f24",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2d3133",
+                        "primary-container": "#002b49",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary-fixed-variant": "#274969",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-tint": "#406182",
+                        "on-tertiary-container": "#2d9eac",
+                        "outline-variant": "#c3c7ce",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed": "#001f24"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["IBM Plex Sans"],
+                        "label-sm": ["IBM Plex Sans"],
+                        "headline-lg": ["IBM Plex Sans"],
+                        "headline-md": ["IBM Plex Sans"],
+                        "display-lg": ["IBM Plex Sans"],
+                        "body-md": ["Noto Sans"],
+                        "headline-lg-mobile": ["IBM Plex Sans"],
+                        "body-lg": ["Noto Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .ai-insight-layer {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid #00daf3;
+        }
+        .shadow-tinted {
+            box-shadow: 0 4px 12px rgba(0, 43, 73, 0.06);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row">
+<!-- NavigationDrawer (Web) -->
+<aside class="hidden md:flex h-full w-80 rounded-r-xl bg-surface border-r border-outline-variant shadow-lg flex-col p-4 fixed left-0 top-0 z-40">
+<div class="mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">GovFlow AI</h1>
+</div>
+<div class="flex items-center gap-4 mb-8 p-4 bg-surface-container-low rounded-xl">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center text-primary font-bold">
+                KA
+            </div>
+<div>
+<p class="font-label-md text-label-md text-primary font-bold">Khalid Al-Mansoori</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Sovereign Tier User</p>
+<p class="font-label-sm text-label-sm text-secondary-fixed-dim mt-1">GovFlow AI Copilot Active</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 p-3 bg-primary-container text-on-primary-container rounded-xl font-bold transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-low rounded-xl transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-md text-label-md">AI Insights</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-low rounded-xl transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Digital Vault</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-low rounded-xl transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-md text-label-md">Compliance</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-low rounded-xl transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</nav>
+</aside>
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-surface">
+<button class="text-primary hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">GovFlow AI</h1>
+<button class="text-primary hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">language</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow md:ml-80 pt-16 md:pt-0 pb-24 md:pb-8 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-[1440px] mx-auto mt-8 md:mt-16">
+<!-- Welcome Section -->
+<section class="mb-12">
+<h2 class="font-display-lg text-display-lg text-primary mb-6">How can I help you complete your transaction?</h2>
+<!-- Primary Input -->
+<div class="relative glass-panel rounded-xl shadow-tinted p-2 flex items-center mb-4 transition-all focus-within:ring-2 focus-within:ring-primary">
+<span class="material-symbols-outlined text-outline ml-4">arrow_back_ios_new</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-primary placeholder-outline p-4 outline-none" placeholder="What would you like to accomplish?" type="text"/>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md text-label-md hover:bg-primary-fixed-variant transition-colors flex items-center gap-2">
+<span>Process</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="flex gap-2 flex-wrap ml-2">
+<span class="font-label-sm text-label-sm text-outline">Examples:</span>
+<button class="font-label-sm text-label-sm text-primary hover:text-secondary-fixed-dim transition-colors bg-surface-container-low px-3 py-1 rounded-full">Renew my trade license</button>
+<button class="font-label-sm text-label-sm text-primary hover:text-secondary-fixed-dim transition-colors bg-surface-container-low px-3 py-1 rounded-full">Pay utility bills</button>
+</div>
+</section>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column (Main Focus) -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Transaction Readiness Card -->
+<div class="ai-insight-layer rounded-xl p-6 shadow-tinted relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-container to-tertiary-fixed-dim"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Trade License Renewal</h3>
+<p class="font-body-md text-body-md text-outline">Transaction Readiness Assessment</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-display-lg text-display-lg text-secondary-fixed-dim">82%</span>
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase">Ready</span>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]">check</span>
+</div>
+<span class="font-body-md text-body-md text-primary">Required documents identified</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[14px]">check</span>
+</div>
+<span class="font-body-md text-body-md text-primary">Passport verified (Digital Vault)</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-error-container rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-error">warning</span>
+<span class="font-body-md text-body-md text-error flex-grow">Tenancy contract needs attention</span>
+<button class="font-label-sm text-label-sm text-error underline">Update</button>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-secondary-container to-tertiary-fixed-dim text-on-secondary-container font-label-md text-label-md py-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity font-bold">
+                            Review Readiness
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Active Transactions -->
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Active Transactions</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="glass-panel rounded-xl p-5 shadow-sm border-t-2 border-primary">
+<div class="flex justify-between items-center mb-3">
+<span class="font-label-sm text-label-sm px-2 py-1 bg-surface-container-high text-primary rounded-full">AI Preparing</span>
+<span class="material-symbols-outlined text-outline">hourglass_empty</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Visa Renewal</h4>
+<p class="font-body-md text-body-md text-outline mb-4">Compiling required medical records.</p>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-primary w-1/3 h-full"></div>
+</div>
+</div>
+<div class="glass-panel rounded-xl p-5 shadow-sm border-t-2 border-error">
+<div class="flex justify-between items-center mb-3">
+<span class="font-label-sm text-label-sm px-2 py-1 bg-error-container text-error rounded-full">Action Required</span>
+<span class="material-symbols-outlined text-error">error</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Vehicle Registration</h4>
+<p class="font-body-md text-body-md text-outline mb-4">Insurance policy missing.</p>
+<button class="text-error font-label-md text-label-md flex items-center gap-1 hover:underline">
+                                    Upload Document <span class="material-symbols-outlined text-sm">upload</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (Contextual) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- AI Recommendations -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary-fixed-dim">tips_and_updates</span>
+<h3 class="font-headline-md text-headline-md text-primary">AI Recommendations</h3>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-surface-container rounded-lg border-l-4 border-secondary-fixed-dim">
+<p class="font-body-md text-body-md text-primary mb-2">Your tenancy contract expires in 14 days.</p>
+<button class="font-label-sm text-label-sm text-primary hover:text-secondary-fixed-dim transition-colors flex items-center gap-1">
+                                    Start Renewal <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="p-4 bg-surface-container rounded-lg border-l-4 border-outline">
+<p class="font-body-md text-body-md text-primary mb-2">New sovereign compliance update available for review.</p>
+<button class="font-label-sm text-label-sm text-primary hover:text-secondary-fixed-dim transition-colors flex items-center gap-1">
+                                    View Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface-container border-t border-outline-variant shadow-sm rounded-t-full">
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-sm text-label-sm">AI Chat</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-sm text-label-sm">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</button>
+</nav>
+</body></html>

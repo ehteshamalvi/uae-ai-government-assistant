@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction Workspace - GovFlow AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#002e34",
+                        "on-surface-variant": "#42474d",
+                        "tertiary-fixed-dim": "#6fd5e4",
+                        "primary-fixed-dim": "#a8caef",
+                        "secondary-fixed-dim": "#00daf3",
+                        "surface-container": "#eceef0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7293b6",
+                        "tertiary-fixed": "#94f1ff",
+                        "surface": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#9cf0ff",
+                        "outline": "#73777e",
+                        "on-error": "#ffffff",
+                        "secondary": "#006875",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#004f57",
+                        "on-secondary-fixed-variant": "#004f58",
+                        "on-background": "#191c1e",
+                        "inverse-on-surface": "#eff1f3",
+                        "inverse-primary": "#a8caef",
+                        "secondary-container": "#00e3fd",
+                        "on-secondary-container": "#00616d",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#00181b",
+                        "on-primary-fixed": "#001d34",
+                        "primary-fixed": "#cfe5ff",
+                        "primary": "#001629",
+                        "on-secondary-fixed": "#001f24",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2d3133",
+                        "primary-container": "#002b49",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary-fixed-variant": "#274969",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-tint": "#406182",
+                        "on-tertiary-container": "#2d9eac",
+                        "outline-variant": "#c3c7ce",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed": "#001f24"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["IBM Plex Sans"],
+                        "label-sm": ["IBM Plex Sans"],
+                        "headline-lg": ["IBM Plex Sans"],
+                        "headline-md": ["IBM Plex Sans"],
+                        "display-lg": ["IBM Plex Sans"],
+                        "body-md": ["Noto Sans"],
+                        "headline-lg-mobile": ["IBM Plex Sans"],
+                        "body-lg": ["Noto Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-glow {
+            box-shadow: 0 0 24px rgba(0, 218, 243, 0.15);
+        }
+        .ai-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 218, 243, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed min-h-screen flex flex-col md:flex-row">
+<!-- Navigation Drawer (Desktop) / Hidden on intent linear task but keeping per json as anchor if needed, however instruction says "Automatic Suppression: You MUST exclude the navigation shell if the page intent is: Linear/Transactional". Since this is a "Workspace" preparing a transaction, we suppress the global nav shell for a focused canvas. -->
+<!-- Top App Bar for Focused View (repurposing TopAppBar for focused context) -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-surface dark:bg-on-background border-b border-surface-variant">
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed-dim">Prepare Transaction</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant px-3 py-1 bg-surface-container rounded-full">Draft Autosaved</span>
+<button class="p-2 rounded-full text-primary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1440px] mx-auto mt-16 p-6 md:p-12 lg:p-16 mb-24 md:mb-0 overflow-y-auto">
+<div class="mb-10">
+<h2 class="font-display-lg text-display-lg text-primary mb-2">Trade License Renewal</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Complete the required steps to submit your application.</p>
+</div>
+<!-- Progress Stepper -->
+<div class="w-full mb-12 overflow-x-auto pb-4">
+<div class="flex items-center min-w-[800px]">
+<!-- Step 1 -->
+<div class="flex flex-col items-center flex-1 relative">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10 shadow-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+</div>
+<span class="mt-3 font-label-md text-label-md text-secondary text-center">Service Identified</span>
+<div class="absolute top-4 left-1/2 w-full h-[2px] bg-secondary -z-0"></div>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center flex-1 relative">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10 shadow-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+</div>
+<span class="mt-3 font-label-md text-label-md text-secondary text-center">Requirements Checked</span>
+<div class="absolute top-4 left-1/2 w-full h-[2px] bg-secondary -z-0"></div>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center flex-1 relative">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10 shadow-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+</div>
+<span class="mt-3 font-label-md text-label-md text-secondary text-center">Documents Validated</span>
+<div class="absolute top-4 left-1/2 w-full h-[2px] bg-outline-variant -z-0"></div>
+</div>
+<!-- Step 4 (Active) -->
+<div class="flex flex-col items-center flex-1 relative">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center z-10 shadow-md ring-4 ring-primary-fixed">
+<span class="font-label-md text-label-md">4</span>
+</div>
+<span class="mt-3 font-label-md text-label-md text-primary font-bold text-center">Application Prepared</span>
+<div class="absolute top-4 left-1/2 w-full h-[2px] bg-outline-variant -z-0"></div>
+</div>
+<!-- Step 5 -->
+<div class="flex flex-col items-center flex-1 relative">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center z-10 border border-outline-variant">
+<span class="font-label-md text-label-md">5</span>
+</div>
+<span class="mt-3 font-label-md text-label-md text-on-surface-variant text-center">User Review</span>
+<div class="absolute top-4 left-1/2 w-full h-[2px] bg-outline-variant -z-0"></div>
+</div>
+<!-- Step 6 -->
+<div class="flex flex-col items-center flex-1 relative">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center z-10 border border-outline-variant">
+<span class="font-label-md text-label-md">6</span>
+</div>
+<span class="mt-3 font-label-md text-label-md text-on-surface-variant text-center">Submission</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Main Content Area -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Application Summary Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<h3 class="font-headline-md text-headline-md text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="description">description</span>
+                        Application Summary
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Applicant</span>
+<p class="font-body-md text-body-md text-on-surface font-medium">Tech Innovations LLC</p>
+</div>
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Service</span>
+<p class="font-body-md text-body-md text-on-surface font-medium">Trade License Renewal</p>
+</div>
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Documents</span>
+<div class="flex items-center gap-2 mt-1">
+<div class="flex-1 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-4/5 rounded-full"></div>
+</div>
+<span class="font-label-md text-label-md text-secondary font-semibold">4 of 5 verified</span>
+</div>
+</div>
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Readiness</span>
+<div class="flex items-center gap-2 mt-1">
+<div class="flex-1 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[82%] rounded-full"></div>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold">82%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Document Checklist (Mockup of step content) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Required Documents</h3>
+<ul class="space-y-3">
+<li class="flex items-center justify-between p-3 rounded-lg border border-surface-variant bg-surface">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Current Trade License Copy</span>
+</div>
+<a class="font-label-md text-label-md text-primary hover:underline" href="#">View</a>
+</li>
+<li class="flex items-center justify-between p-3 rounded-lg border border-surface-variant bg-surface">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Tenancy Contract (Tawtheeq)</span>
+</div>
+<a class="font-label-md text-label-md text-primary hover:underline" href="#">View</a>
+</li>
+<li class="flex items-center justify-between p-3 rounded-lg border border-surface-variant bg-surface">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Memorandum of Association</span>
+</div>
+<a class="font-label-md text-label-md text-primary hover:underline" href="#">View</a>
+</li>
+<li class="flex items-center justify-between p-3 rounded-lg border border-error-container bg-error-container/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error" data-icon="error">error</span>
+<span class="font-body-md text-body-md text-error font-medium">NOC from relevant authority</span>
+</div>
+<button class="font-label-md text-label-md text-primary hover:underline">Upload</button>
+</li>
+</ul>
+</div>
+</div>
+<!-- Side Panel -->
+<div class="space-y-6">
+<!-- AI Assistant Card (Glassmorphic Insight Layer) -->
+<div class="ai-glass rounded-xl p-6 relative overflow-hidden ai-glow">
+<!-- Subtle AI Background Pattern -->
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-secondary-container rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+<div class="flex items-start gap-4 relative z-10">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-1 font-bold tracking-wide uppercase">GovFlow AI Insight</h4>
+<p class="font-body-md text-body-md text-on-surface">Your application has been prepared based on provided data.</p>
+<div class="mt-4 p-3 bg-surface-container-low rounded border border-outline-variant/50">
+<span class="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="fact_check">fact_check</span> Validation Status
+                                </span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>
+<span class="font-body-md text-body-md font-medium text-on-surface">Passed with 1 warning</span>
+</div>
+<p class="text-sm mt-2 text-on-surface-variant pl-4 border-l-2 border-secondary/30">NOC document is pending, but you can proceed to review if not mandatory for initial submission.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Actions -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-4">
+<button class="w-full py-3 px-4 bg-gradient-to-r from-primary to-primary-fixed-variant text-on-primary rounded-lg font-label-md text-label-md shadow-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="rate_review">rate_review</span>
+                        Review Application
+                    </button>
+<button class="w-full py-3 px-4 bg-transparent border-2 border-primary text-primary rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+                        Save Draft
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

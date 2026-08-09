@@ -1,0 +1,3 @@
+-- AlterEnum
+ALTER TYPE "RequirementType" ADD VALUE IF NOT EXISTS 'CONSENT';
+ALTER TYPE "RequirementType" ADD VALUE IF NOT EXISTS 'PAYMENT';

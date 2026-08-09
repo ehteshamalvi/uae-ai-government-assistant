@@ -1,0 +1,41 @@
+services:
+  # Optional local infrastructure. Embedded Postgres + Redis memory fallback
+  # continue to work without Docker for day-to-day development.
+  postgres:
+    image: postgres:16-alpine
+    container_name: govflow-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: govflow
+      POSTGRES_PASSWORD: govflow
+      POSTGRES_DB: govflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - govflow_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U govflow -d govflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: govflow-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - govflow_redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Optional: API/web containers can be added later.
+  # Local recommended: npm run dev with compose for postgres/redis only.
+
+volumes:
+  govflow_pg_data:
+  govflow_redis_data:

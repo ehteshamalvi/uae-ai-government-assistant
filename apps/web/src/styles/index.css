@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #f7f9fb;
+  --color-on-background: #191c1e;
+  --color-surface: #f7f9fb;
+  --color-surface-dim: #d8dadc;
+  --color-surface-bright: #f7f9fb;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f2f4f6;
+  --color-surface-container: #eceef0;
+  --color-surface-container-high: #e6e8ea;
+  --color-surface-container-highest: #e0e3e5;
+  --color-surface-variant: #e0e3e5;
+  --color-on-surface: #191c1e;
+  --color-on-surface-variant: #42474d;
+  --color-outline: #73777e;
+  --color-outline-variant: #c3c7ce;
+
+  --color-primary: #001629;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #002b49;
+  --color-on-primary-container: #7293b6;
+  --color-primary-fixed: #cfe5ff;
+  --color-primary-fixed-dim: #a8caef;
+  --color-on-primary-fixed: #001d34;
+  --color-on-primary-fixed-variant: #274969;
+
+  --color-secondary: #006875;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #00e3fd;
+  --color-on-secondary-container: #00616d;
+  --color-secondary-fixed: #9cf0ff;
+  --color-secondary-fixed-dim: #00daf3;
+  --color-on-secondary-fixed: #001f24;
+  --color-on-secondary-fixed-variant: #004f58;
+
+  --color-tertiary: #00181b;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #002e34;
+  --color-on-tertiary-container: #2d9eac;
+  --color-tertiary-fixed: #94f1ff;
+  --color-tertiary-fixed-dim: #6fd5e4;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  --color-success: #0f7b4a;
+  --color-warning: #b45309;
+  --color-info: #006875;
+  --color-ai-cyan: #00daf3;
+  --color-ai-teal: #006875;
+
+  --font-display: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-label: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: 0.125rem;
+  --radius-DEFAULT: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 20px;
+  --spacing-margin-desktop: 64px;
+  --container-max: 1440px;
+}
+
+:root {
+  --shadow-tinted: 0 4px 12px rgba(0, 43, 73, 0.06);
+}
+
+@layer base {
+  html {
+    @apply bg-background text-on-background antialiased;
+  }
+
+  body {
+    @apply min-h-dvh font-body;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+  }
+
+  .ai-insight-layer {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid #00daf3;
+  }
+
+  .shadow-tinted {
+    box-shadow: var(--shadow-tinted);
+  }
+
+  .ai-border-top {
+    border-top: 2px solid #00daf3;
+  }
+}

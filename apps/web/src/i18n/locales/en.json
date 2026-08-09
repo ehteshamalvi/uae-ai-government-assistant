@@ -1,0 +1,52 @@
+{
+  "appName": "GovFlow AI",
+  "tagline": "AI-powered Digital Transaction Intelligence",
+  "sandboxBanner": "Sandbox Environment — Demo platform only. Not affiliated with any UAE government entity.",
+  "nav": {
+    "home": "Home",
+    "search": "Search",
+    "aiChat": "AI Chat",
+    "history": "History",
+    "settings": "Settings",
+    "dashboard": "Dashboard",
+    "demo": "Council Demo",
+    "insights": "AI Insights",
+    "vault": "Digital Vault",
+    "compliance": "Compliance",
+    "support": "Support"
+  },
+  "actions": {
+    "process": "Process",
+    "continue": "Continue",
+    "upload": "Upload",
+    "review": "Review",
+    "saveDraft": "Save Draft",
+    "login": "Sign in",
+    "logout": "Sign out"
+  },
+  "common": {
+    "loading": "Loading…",
+    "empty": "Nothing here yet",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "language": "Language"
+  },
+  "dashboard": {
+    "hero": "How can I help you complete your transaction?",
+    "placeholder": "What would you like to accomplish?",
+    "readiness": "Transaction Readiness Assessment",
+    "active": "Active Transactions",
+    "recommendations": "AI Recommendations"
+  },
+  "search": {
+    "title": "What do you need to accomplish?",
+    "placeholder": "Describe your request…",
+    "intentAnalysis": "AI Intent Analysis"
+  },
+  "login": {
+    "title": "Sign in to GovFlow AI",
+    "subtitle": "Sandbox demo access — authentication wiring comes in a later phase.",
+    "email": "Email",
+    "password": "Password"
+  }
+}

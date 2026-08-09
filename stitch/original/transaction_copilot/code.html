@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GovFlow AI Transaction Copilot</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#002e34",
+                      "on-surface-variant": "#42474d",
+                      "tertiary-fixed-dim": "#6fd5e4",
+                      "primary-fixed-dim": "#a8caef",
+                      "secondary-fixed-dim": "#00daf3",
+                      "surface-container": "#eceef0",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#7293b6",
+                      "tertiary-fixed": "#94f1ff",
+                      "surface": "#f7f9fb",
+                      "on-primary": "#ffffff",
+                      "background": "#f7f9fb",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed": "#9cf0ff",
+                      "outline": "#73777e",
+                      "on-error": "#ffffff",
+                      "secondary": "#006875",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-tertiary-fixed-variant": "#004f57",
+                      "on-secondary-fixed-variant": "#004f58",
+                      "on-background": "#191c1e",
+                      "inverse-on-surface": "#eff1f3",
+                      "inverse-primary": "#a8caef",
+                      "secondary-container": "#00e3fd",
+                      "on-secondary-container": "#00616d",
+                      "surface-dim": "#d8dadc",
+                      "on-secondary": "#ffffff",
+                      "tertiary": "#00181b",
+                      "on-primary-fixed": "#001d34",
+                      "primary-fixed": "#cfe5ff",
+                      "primary": "#001629",
+                      "on-secondary-fixed": "#001f24",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#2d3133",
+                      "primary-container": "#002b49",
+                      "on-surface": "#191c1e",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-bright": "#f7f9fb",
+                      "on-primary-fixed-variant": "#274969",
+                      "surface-container-high": "#e6e8ea",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-tint": "#406182",
+                      "on-tertiary-container": "#2d9eac",
+                      "outline-variant": "#c3c7ce",
+                      "surface-variant": "#e0e3e5",
+                      "on-tertiary-fixed": "#001f24"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "gutter": "24px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "64px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "IBM Plex Sans"
+                      ],
+                      "label-sm": [
+                              "IBM Plex Sans"
+                      ],
+                      "headline-lg": [
+                              "IBM Plex Sans"
+                      ],
+                      "headline-md": [
+                              "IBM Plex Sans"
+                      ],
+                      "display-lg": [
+                              "IBM Plex Sans"
+                      ],
+                      "body-md": [
+                              "Noto Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "IBM Plex Sans"
+                      ],
+                      "body-lg": [
+                              "Noto Sans"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 218, 243, 0.2);
+        }
+        .ai-gradient-text {
+            background: linear-gradient(to right, #00daf3, #006875);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .shadow-tinted {
+            box-shadow: 0 4px 12px rgba(0, 43, 73, 0.06);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:flex-row">
+<!-- Mobile Top Navigation (md:hidden) -->
+<header class="md:hidden fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-surface dark:bg-on-background shadow-sm">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed-dim">GovFlow AI</h1>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="language">language</span>
+</button>
+</header>
+<!-- Desktop Sidebar Navigation (hidden md:flex) -->
+<nav class="hidden md:flex flex-col h-screen w-80 bg-surface dark:bg-on-background border-r border-outline-variant dark:border-outline shadow-lg dark:shadow-none p-4 sticky top-0 z-40">
+<!-- Header: Profile Layout -->
+<div class="flex items-center gap-4 mb-8 p-2">
+<img class="w-12 h-12 rounded-full object-cover border-2 border-primary-container" data-alt="A professional headshot of a Middle Eastern man in a modern corporate setting, wearing business attire. Soft, high-key studio lighting with a subtle blue tint reflecting a tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARXnmQvasSRZTOdd2v6f57Xb34qYdFfZfSF9hyjetUohKv10xCOBfTE-8rgqjB_CoJ5bcyZXgHoK8HuMedtQY5rxXECdo6azVMaHIQW1azkUUJsKgCZd7xgkExvw7Wik0uzSQtqtChJive5ugyoMP1BSvd6J1NUh_X6-wETVrNy4ZJ_Wf5XHDNjqO7vz9_yhaMjHjfqzhyJTTilqSv5n_NL4D7jRd3HogCnuUllMXRFoYOibH4b1A"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-primary dark:text-primary-fixed-dim">Khalid Al-Mansoori</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant dark:text-outline-variant">Sovereign Tier User</span>
+<span class="text-[10px] text-secondary font-semibold mt-1">GovFlow AI Copilot Active</span>
+</div>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-colors duration-200 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-colors duration-200 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary font-bold shadow-tinted" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-label-md text-label-md">AI Insights</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-colors duration-200 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Digital Vault</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-colors duration-200 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-md text-label-md">Compliance</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl transition-colors duration-200 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col pt-16 md:pt-0 h-[884px] pb-[80px] md:pb-0 relative overflow-hidden">
+<!-- Chat Header -->
+<div class="px-margin-mobile md:px-margin-desktop py-4 md:py-6 border-b border-surface-variant bg-surface-lowest z-10 flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="psychology">psychology</span>
+                    GovFlow AI Transaction Copilot
+                </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Specialized assistance for complex transactions</p>
+</div>
+<div class="hidden md:flex gap-3">
+<button class="px-4 py-2 rounded-lg border border-outline-variant text-primary font-label-md text-label-md hover:bg-surface-container-low transition-colors">Clear Context</button>
+<button class="px-4 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-colors shadow-sm">Save Session</button>
+</div>
+</div>
+<!-- Chat History Area -->
+<div class="flex-grow overflow-y-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col gap-6" id="chat-container">
+<!-- User Message -->
+<div class="flex gap-4 justify-end">
+<div class="max-w-[85%] md:max-w-[70%] bg-primary-container text-on-primary-container rounded-t-xl rounded-bl-xl p-4 shadow-tinted">
+<p class="font-body-md text-body-md">What is the current status of my Trade License Renewal application?</p>
+</div>
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant hidden md:block mt-auto" data-alt="A professional headshot of a Middle Eastern man in a modern corporate setting, wearing business attire. Soft, high-key studio lighting with a subtle blue tint reflecting a tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACRQybITQ6iNqOFc79LibZnm28ZOFJgAz-_uoH4GWXHVajpb7Ki6826QDrAMXXpXkm1ODt5Mji-hYc059Xvqi8qp6Cm-i75nSevKc0Pf_7DS43gkXul589w9zEO6SpQwiUlH2VyyrvL3AkxmAJZ2Rq4w4axdsNNu5qc4vqOXy-nVlQ-9cQiYwF5Gr8zm0G2u8FkaaM0KrPbTyBwo7NEqjB_RuPNeH3RRtdFIKsFufUpnZDs_KFFck"/>
+</div>
+<!-- AI Response -->
+<div class="flex gap-4 justify-start">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center border border-secondary mt-auto hidden md:flex shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="smart_toy">smart_toy</span>
+</div>
+<div class="max-w-[95%] md:max-w-[80%] flex flex-col gap-4">
+<div class="glass-panel p-5 rounded-t-xl rounded-br-xl shadow-tinted border-t-2 border-t-secondary">
+<p class="font-body-md text-body-md text-on-surface mb-4">Your Trade License Renewal application is currently in progress. It is pending final approval from the Ministry of Economy. All prerequisite documents have been verified.</p>
+<!-- Transaction Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm relative overflow-hidden group hover:border-secondary transition-colors cursor-pointer">
+<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-secondary-container to-transparent opacity-20 -mr-16 -mt-16 rounded-full group-hover:scale-110 transition-transform"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="assignment">assignment</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary font-bold">Trade License Renewal</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">TRN-2023-8942</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded-md font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="pending">pending</span>
+                                    In Progress
+                                </span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Completion Progress</span>
+<span class="text-secondary font-bold">70%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-gradient-to-r from-secondary to-secondary-fixed h-2 rounded-full" style="width: 70%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Suggested Actions -->
+<div class="flex flex-wrap gap-2 mt-2">
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest border border-outline-variant text-primary font-label-sm text-label-sm hover:border-secondary hover:text-secondary transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="fact_check">fact_check</span>
+                            Check Readiness
+                        </button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest border border-outline-variant text-primary font-label-sm text-label-sm hover:border-secondary hover:text-secondary transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="description">description</span>
+                            View Documents
+                        </button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest border border-outline-variant text-primary font-label-sm text-label-sm hover:border-secondary hover:text-secondary transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="info">info</span>
+                            Explain Status
+                        </button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest border border-outline-variant text-primary font-label-sm text-label-sm hover:border-secondary hover:text-secondary transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="edit_document">edit_document</span>
+                            Prepare Application
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Input Area -->
+<div class="px-margin-mobile md:px-margin-desktop py-4 bg-surface dark:bg-on-background border-t border-surface-variant z-20">
+<div class="max-w-4xl mx-auto relative group">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-4 pr-14 py-4 font-body-md text-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary shadow-sm transition-all" placeholder="Ask Copilot about your transactions, documents, or regulations..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center hover:bg-on-primary-fixed-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+<div class="text-center mt-2 hidden md:block">
+<span class="font-label-sm text-label-sm text-on-surface-variant">AI-generated information may require manual verification for legal proceedings.</span>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation (md:hidden) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface-container dark:bg-tertiary-container border-t border-outline-variant dark:border-outline shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-tertiary-fixed-variant active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-tertiary-fixed-variant active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-sm text-label-sm">AI Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-tertiary-fixed-variant active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-sm text-label-sm">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-tertiary-fixed-variant active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        // Smooth scroll to bottom on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatContainer = document.getElementById('chat-container');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        });
+    </script>
+</body></html>
